@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
@@ -15,24 +14,24 @@ public class Computer {
         this.numbers = numbers;
     }
 
-    public List<Integer> countBallAndStrike(List<Integer> numbers) {
+    public List<Integer> getBallAndStrike(List<Integer> numbers) {
         int strike = countExactValue(numbers);
         int ball = countHasValue(numbers) - strike;
-        return Arrays.asList(ball, strike);
+        return List.of(ball, strike);
     }
 
     private int countExactValue(List<Integer> numbers) {
         return
                 (int) IntStream
                         .range(0, NUMBER_SIZE)
-                        .mapToObj(index -> Objects.equals(this.numbers.get(index), numbers.get(index)))
+                        .filter(index -> this.numbers.get(index).equals(numbers.get(index)))
                         .count();
     }
 
     private int countHasValue(List<Integer> numbers) {
         return
                 (int) numbers.stream()
-                        .map(this.numbers::contains)
+                        .filter(this.numbers::contains)
                         .count();
     }
 }
