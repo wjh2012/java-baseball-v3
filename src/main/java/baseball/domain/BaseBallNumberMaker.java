@@ -1,5 +1,6 @@
-package baseball;
+package baseball.domain;
 
+import baseball.NumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
