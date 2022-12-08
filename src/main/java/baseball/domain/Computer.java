@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Computer {
@@ -14,13 +13,7 @@ public class Computer {
         this.numbers = numbers;
     }
 
-    public List<Integer> getBallAndStrike(List<Integer> numbers) {
-        int strike = countExactValue(numbers);
-        int ball = countHasValue(numbers) - strike;
-        return List.of(ball, strike);
-    }
-
-    private int countExactValue(List<Integer> numbers) {
+    public int countExactValue(List<Integer> numbers) {
         return
                 (int) IntStream
                         .range(0, NUMBER_SIZE)
@@ -28,7 +21,7 @@ public class Computer {
                         .count();
     }
 
-    private int countHasValue(List<Integer> numbers) {
+    public int countHasValue(List<Integer> numbers) {
         return
                 (int) numbers.stream()
                         .filter(this.numbers::contains)
