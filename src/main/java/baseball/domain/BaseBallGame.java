@@ -6,7 +6,7 @@ public class BaseBallGame {
 
     private final Computer computer;
 
-    public BaseBallGame(BaseBallNumberMaker baseBallNumberMaker){
+    public BaseBallGame(BaseBallNumberMaker baseBallNumberMaker) {
         List<Integer> numbers = baseBallNumberMaker.make();
         computer = new Computer(numbers);
     }
