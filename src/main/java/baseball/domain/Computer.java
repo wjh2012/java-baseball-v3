@@ -1,11 +1,11 @@
 package baseball.domain;
 
+import static baseball.constants.Constants.GAME_NUMBER_SIZE;
+
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class Computer {
-
-    private static final int NUMBER_SIZE = 3;
 
     private final List<Integer> numbers;
 
@@ -16,7 +16,7 @@ public class Computer {
     public int countExactValue(List<Integer> numbers) {
         return
                 (int) IntStream
-                        .range(0, NUMBER_SIZE)
+                        .range(0, GAME_NUMBER_SIZE)
                         .filter(index -> this.numbers.get(index).equals(numbers.get(index)))
                         .count();
     }
