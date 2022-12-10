@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.constants;
 
 import static baseball.constants.Constants.GAME_NUMBER_SIZE;
 
@@ -6,26 +6,27 @@ import java.util.List;
 
 public class NumberValidator {
 
-    public boolean validateAll(List<Integer> numbers) {
+    public static boolean validateNumbers(List<Integer> numbers) {
         try {
-            validateSize(numbers);
-            validateUniq(numbers);
+            validateNumbersSize(numbers);
+            validateNumbersUniq(numbers);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
         return true;
     }
 
-    private void validateSize(List<Integer> numbers) {
+    private static void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != GAME_NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateUniq(List<Integer> numbers) {
+    private static void validateNumbersUniq(List<Integer> numbers) {
         int result = (int) numbers.stream().distinct().count();
         if (result != GAME_NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
     }
+
 }

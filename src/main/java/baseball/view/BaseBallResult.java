@@ -1,11 +1,11 @@
-package baseball.domain;
+package baseball.view;
 
-public class BallAndStrikeResult {
+public class BaseBallResult {
 
-    private int ball;
-    private int strike;
+    private final int ball;
+    private final int strike;
 
-    public BallAndStrikeResult(int ball, int strike) {
+    public BaseBallResult(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
     }
