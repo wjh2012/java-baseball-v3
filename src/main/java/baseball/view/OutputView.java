@@ -1,6 +1,8 @@
 package baseball.view;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class OutputView {
 
@@ -20,26 +22,32 @@ public class OutputView {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public void ballAndStrike(int ball, int strike){
-        List<String> result = List.of(ball(ball), strike(strike));
-        System.out.println(String.join(" ", result));
+    public void result(BaseBallResult baseBallResult) {
+        String result = makeResult(baseBallResult);
+        System.out.println(result);
     }
 
-    private String ball(int n) {
-        if (n != 0) {
-            return Integer.toString(n);
+    private String makeResult(BaseBallResult baseBallResult) {
+        List<String> result = new ArrayList<>();
+        isBall(baseBallResult.getBall()).ifPresent(result::add);
+        isStrike(baseBallResult.getStrike()).ifPresent(result::add);
+
+        if (result.isEmpty()) {
+            return "낫싱";
         }
-        return "";
+        return String.join(" ", result);
     }
 
-    private String strike(int n) {
-        if (n != 0) {
-            return Integer.toString(n);
-        }
-        return "";
+    private Optional<String> isBall(int ball) {
+        return Optional.ofNullable(ball)
+                .filter(n -> n != 0)
+                .map(n -> n + "볼");
     }
 
-    public void nothing() {
-        System.out.println("낫싱");
+    private Optional<String> isStrike(int strike) {
+        return Optional.ofNullable(strike)
+                .filter(n -> n != 0)
+                .map(n -> n + "스트라이크");
     }
+
 }
