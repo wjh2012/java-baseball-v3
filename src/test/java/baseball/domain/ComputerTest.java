@@ -40,7 +40,7 @@ class ComputerTest {
         Computer computer = new Computer(List.of(1, 2, 3));
 
         // when
-       int ball = computer.countHasValue(List.of(9, 8, 7));
+        int ball = computer.countHasValue(List.of(9, 8, 7));
 
         // then
         Assertions.assertThat(ball).isEqualTo(0);
